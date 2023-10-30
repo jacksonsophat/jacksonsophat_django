@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-2xl font-bold my-8">Local News</h1>
+<div>
+    {% for item in data %}
+    <div class="border-[1px] border-stone-400 mb-4 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 ">
+        <div>
+            <img class="aspect-video" src="{% if item.image == False %}
+            {% static '/images/no_img.jpg' %}
+            {% else %}
+            {{item.image}}
+            {% endif %}" alt="{{item.title}}">
+        </div>
+        <div class=" lg:col-span-2 flex flex-col justify-between">
+            <div class="mb-8">
+                <h2 class="mb-4 text-xl font-bold "><a href="{{item.link}}" target="_blank">{{item.title}}</a> </h2>
+                <p>{{ item.summary}}</p>
+            </div>
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end small">
+                <div>
+                    <p>Station: {{item.station}}</p>
+                    <p>Published: {{item.published}}</p>
+                </div>
+                <a href="{{item.link}}" target="_blank" class="small btn white">View
+                    Detail</a>
+            </div>
+        </div>
+        <!-- <p>{{item}}</p> -->
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

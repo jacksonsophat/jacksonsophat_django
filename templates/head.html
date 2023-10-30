@@ -1,0 +1,48 @@
+{% load compress %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page_title %}{{ page_title}} | {% endif %}Jackson Sophat</title>
+
+
+    <!-- Primary Meta Tags -->
+    <meta name="title"
+        content="{% if meta_title %}{{ meta_title}}{% else %}Experienced Web Engineer | Crafting Digital Solutions for Success{% endif %}">
+    <meta name="description"
+        content="{% if meta_desc %}{{ meta_desc}}{% else %}Full Stack Developer | Bridging Front-end Elegance with Back-end Power. I bring a versatile skill set to the table, proficient in web development, database management, and system architecture. From user-friendly interfaces to robust server-side solutions, I'm your go-to partner for end-to-end development excellence.{% endif %}">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title"
+        content="{% if meta_title %}{{ meta_title}}{% else %}Experienced Web Engineer | Crafting Digital Solutions for Success{% endif %}">
+    <meta property="og:description"
+        content="{% if meta_desc %}{{ meta_desc}}{% else %}Full Stack Developer | Bridging Front-end Elegance with Back-end Power. I bring a versatile skill set to the table, proficient in web development, database management, and system architecture. From user-friendly interfaces to robust server-side solutions, I'm your go-to partner for end-to-end development excellence.{% endif %}">
+    <meta property="og:image" content="{% static '/images/og-image.jpg' %}">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title"
+        content="{% if meta_title %}{{ meta_title}}{% else %}Experienced Web Engineer | Crafting Digital Solutions for Success{% endif %}">
+    <meta property="twitter:description"
+        content="{% if meta_desc %}{{ meta_desc}}{% else %}Full Stack Developer | Bridging Front-end Elegance with Back-end Power. I bring a versatile skill set to the table, proficient in web development, database management, and system architecture. From user-friendly interfaces to robust server-side solutions, I'm your go-to partner for end-to-end development excellence.{% endif %}">
+    <meta property="twitter:image" content="{% static '/images/og-image.jpg' %}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/images/favicon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/images/favicon-16x16.png' %}">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+    {% compress css %}
+    <!-- <link rel="stylesheet" href="{% static 'src/input.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    <!-- static\CACHE\css\output.92969b0cf9ba.css -->
+    {% endcompress %}
+
+
+</head>

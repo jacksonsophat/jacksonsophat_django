@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #e879f9;
+    --secondary: #f472b6;
+    --black: #1c1917;
+    --white: #fafaf9;
+    --secondary: #f472b6;
+    --success: #a7f3d0;
+    --error: #f87171;
+    --warning: #fed7aa;
+}
+
+html,
+body {
+    /* color: black; */
+    /* font-size: 14px; */
+    font-family: "Courier New", Courier, monospace;
+    background: var(--black);
+    color: var(--white);
+}
+
+/* GLOBAL */
+small,
+.small {
+    font-size: 0.85em;
+}
+.select-mood input,
+.select-status input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.btn {
+    padding: 0.85em 2em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn.black {
+    background: var(--black);
+    color: var(--white);
+}
+
+.btn.white {
+    color: var(--black);
+    background: white;
+}
+
+/* Home page */
+/* .home-page ul{
+display: flex;
+} */
