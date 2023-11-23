@@ -11,6 +11,7 @@
     --success: #a7f3d0;
     --error: #f87171;
     --warning: #fed7aa;
+    --transition: all 0.15s ease-in-out;
 }
 
 html,
@@ -23,6 +24,9 @@ body {
 }
 
 /* GLOBAL */
+a {
+    color: var(--primary);
+}
 small,
 .small {
     font-size: 0.85em;
@@ -35,9 +39,10 @@ small,
 }
 
 .btn {
-    padding: 0.85em 2em;
+    padding: 0.5em 2em;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .btn.black {
@@ -49,8 +54,141 @@ small,
     color: var(--black);
     background: white;
 }
+/* .btn.white:hover {
+    background-color: white;
+} */
+
+.btn.primary {
+    color: var(--white);
+    background: var(--primary);
+}
+
+.input-group {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+.input-basic {
+    padding: 0.25rem 0.5rem;
+}
+.input-basic.black {
+    background: transparent;
+    color: var(--white);
+    border: solid 1px var(--white);
+}
+.input-basic.white {
+    background: white;
+    color: var(--black);
+    border: solid 1px var(--black);
+}
+
+.page-wrapper {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.bg-noise {
+    background-image: url("/static/images/bg_noise.png");
+}
+
+.page-heading {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.sec-heading {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.js-desktop {
+    /* only show on desktop */
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .js-desktop {
+        display: block;
+    }
+    .js-mobile {
+        display: block;
+    }
+}
+
+/* End Basic Settings */
+
+/* Amazon Page */
+.tracking-length option {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--black);
+}
+
+/* Zen
+================================================================================ */
+
+.trans {
+    transition: all 0.5s ease-in-out;
+}
+.zen-card.active i {
+    color: var(--black);
+}
+.zen-card input[type="range"]::-webkit-slider-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--black);
+    cursor: pointer;
+    -webkit-appearance: none;
+    transition: var(--transition);
+}
+
+.zen-card input[type="range"]::-webkit-slider-thumb:hover {
+    /* background: var(--primary); */
+    scale: 1.5;
+}
+
+.zen-card .controls input {
+    transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear; /* Firefox 4 */
+    -webkit-transition: all 0.5s linear; /* Safari and Chrome */
+    -o-transition: all 0.5s linear; /* Opera */
+    -ms-transition: all 0.5s linear; /* Explorer 10 */
+}
+.zen-card.active .controls > div {
+    display: flex;
+}
 
 /* Home page */
 /* .home-page ul{
 display: flex;
 } */
+
+/* Toastr */
+#toast-container > .toast {
+    background-image: none !important;
+}
+
+#toast-container > .toast:before {
+    position: fixed;
+    font-family: FontAwesome;
+    /* font-size: 24px; */
+    /* line-height: 18px; */
+    float: left;
+    color: #fff;
+    padding-right: 1em;
+    margin: auto 0.5em auto -1.75em;
+}
+#toast-container > .toast-warning:before {
+    content: "\f071";
+}
+#toast-container > .toast-error:before {
+    content: "\f06a";
+}
+#toast-container > .toast-info:before {
+    content: "\f05a";
+}
+#toast-container > .toast-success:before {
+    content: "\f058";
+}

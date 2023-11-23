@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<!-- <h1>Zen Page</h1> -->
+<div class="page-wrapper zen-page">
+    <div class="flex justify-between">
+        <div>
+            <!-- <div class="btn white">
+                <p>Background</p>
+            </div> -->
+        </div>
+        <div>
+            <div
+                class="btn white rounded shuffle hover:bg-black border-[1px] hover:border-white transition-all hover:text-white">
+                <i class="fa-solid fa-shuffle"></i>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl::grid-cols-6 gap-6 my-6  zen-cards">
+        {% for item in items %}
+        <div
+            class="bg-stone-200 rounded p-4 bg-noise zen-card cursor-pointer relative min-h-[200px] md:min-h-[250px] overflow-hidden">
+            <audio controls class="hidden" preload="none" loop src="/static/audio/zen/{{item.audio_name}}.mp3">
+            </audio>
+            <p class="text-stone-500 mb-4">{{item.name}}</p>
+            <div class="text-stone-700 text-center text-[3em] md:text-[5em] h-[70%] flex items-center justify-center">
+                <i class="{{item.icon}}"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full px-4 py-2 bg-stone-200 controls h-8 bg-noise">
+                <div class="items-center hidden">
+                    <input type="range" min="1" max="100" value="100" id="slider"
+                        class="w-[80%] transparent h-[4px] cursor-pointer appearance-none border-transparent bg-stone-700">
+                    <div class="w-[20%] flex justify-center text-stone-700">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!--  -->
+    </div>
+    <div class="mt-8">
+        <h2 class="sec-heading">Contact Me</h2>
+        <p>Please let me know if you have any suggestion for more sounds I should add here.</p>
+        <a href="{% url 'contact' %}">Contact Me</a>
+    </div>
+</div>
+
+{% endblock content %}

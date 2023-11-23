@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="thank-you-page page-wrapper">
+    <h1 class="page-heading">Thank You</h1>
+    <p>Thank you for contacting me. I'll get back as soon as I can.</p>
+    <p>For now, please check out some of my projects.</p>
+    <div class="md:flex text-xl mt-4">
+        <p><a href="{% url 'zen'%}">Zen</a></p>
+        <span class="mx-12 js-desktop">|</span>
+        <p><a href="{% url 'local_news'%}">Local News (Houston)</a></p>
+    </div>
+</div>
+
+{% endblock content %}

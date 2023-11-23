@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-2xl font-bold my-8">Amazon Price Tracking</h1>
+<form action="{% url 'amazon' %}" method="GET">
+    <div class="w-full border-white border-[1px] p-2 flex">
+        <input class="w-4/5 bg-transparent text-white focus:outline-none" type="text" name="url"
+            placeholder="Paste in the url of the Amazon product you want to track">
+        <div class="w-1/5 flex justify-end">
+            <button class="btn white">Search</button>
+        </div>
+    </div>
+</form>
+{% if output != '' %}
+<div class="mt-40">
+    <h2 class="text-2xl font-bold my-8">Result:</h2>
+    <div class="grid grid-cols-2 gap-4 mt-8">
+        <div class="mx-6">
+            <div class="amazon-carousel">
+                {% for image in output.images %}
+                <img src="{{image}}">
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p class="text-lg mb-4"><span class="underline">Name:</span><span class="font-bold"> {{output.title}}</span>
+            </p>
+            <p class="text-lg"><span class="underline">Current Price:</span><span class="font-bold"></span>
+                {{output.price}}</span>
+            </p>
+
+            <div class="mt-8 p-4 border-[1px] bg-white text-black">
+                <h2 class="underline font-bold text-xl">Tracking this product</h2>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <!-- <div>
+                    {{ form.as_p }}
+                </div> -->
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="name" value="{{output.title}}">
+                    <input type="text" name="url" value="{{output.url}}">
+                    <input type="number" name="current_price" value="{{output.price |slice:'1:' }}">
+                    <div class="mt-2 grid grid-cols-3 gap-2">
+                        <label for="price" class="col-span-2">Track when the price is less than:</label>
+                        <input required id="price" type="number" min="0" step="0.01" class="input-white px-2 py-1"
+                            value="{{output.price |slice:'1:' }}" name="tracking_price">
+                    </div>
+                    <div class="mt-2 grid grid-cols-3 gap-2">
+                        <label for="expired_date" class="col-span-2">Track this item for: </label>
+                        <select required id="expired_date" name="expired_date"
+                            class="tracking-length border-[1px] bg-white border-black px-2 py-1 ">
+                            <option value="1">1 Week</option>
+                            <option value="2">2 Weeks</option>
+                            <option value="3">3 Weeks</option>
+                            <option value="4">4 Weeks</option>
+                            <option value="5">5 Weeks</option>
+                            <option value="6">6 Weeks</option>
+                        </select>
+                    </div>
+                    <div class="mt-2 grid grid-cols-3 gap-2">
+                        <label for="contact_method" class="col-span-2">Get an alert via:</label>
+                        <select name="contact_method" id="contact_method"
+                            class="contact-method-options border-[1px] bg-white border-black px-2 py-1 ">
+                            <option value="phone">Phone</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="mt-2 grid grid-cols-3 gap-2 contact-by">
+                        <label for="alert-by" class="col-span-2"></label>
+                        <input class="input-white phone-number" type="tel" name="phone" placeholder="Phone number"
+                            required>
+                        <input class="input-white hidden email-address" type="email" name="email"
+                            placeholder="Email address">
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" class="btn primary">Track</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- {{output}} -->
+    </div>
+</div>
+
+{% endif %}
+
+<div class="grid grid-cols-3 my-40 gap-4">
+    <div class="flex">
+        <i class="fa-solid fa-magnifying-glass mt-1"></i>
+        <div class="ml-2">
+            <h5 class="text-lg font-bold">Search</h5>
+            <p>Search the product by its URL.</p>
+        </div>
+    </div>
+    <div class="flex">
+        <i class="fa-solid fa-comments-dollar mt-1"></i>
+        <div class="ml-2">
+            <h5 class="text-lg font-bold">Deals</h5>
+            <p>Customize how much discount you are looking for.</p>
+        </div>
+    </div>
+    <div class="flex">
+        <i class="fa-solid fa-bell mt-1"></i>
+        <div class="ml-2">
+            <h5 class="text-lg font-bold">Alert</h5>
+            <p>We send you an alert once there a price drop meets your preference.</p>
+        </div>
+    </div>
+</div>
+
+<div class="my-40">
+    <h2 class="sechead text-xl">FAQs about Amazon Price Tracking</h2>
+    <div class="mt-8">
+        <div class="mb-4">
+            <p>Q: How often do I get an alert?</p>
+            <p>A: You will only get an alert once from us. We send the alert to the option you select by phone or email
+            </p>
+        </div>
+        <div class="mb-4">
+            <p>Q: Do I get any marketing email or messages?</p>
+            <p>A: No, we only contact you once, when the product price meets your preference.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

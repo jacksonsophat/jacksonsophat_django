@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="contact-us-page page-wrapper">
+    <h1 class="page-heading">Contact Us</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 flex-col-reverse">
+        <div class="bg-[url('/static/images/paper-plane.png')] bg-center bg-cover hidden md:block md:h-full">
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input-group">
+                <label for="{{ field.name }}">{{field.label}}</label>
+                {{field}}
+            </div>
+            {% endfor %}
+            <input class="btn white" type="submit">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,5 +1,6 @@
 
 from pathlib import Path
+import os.path  
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,9 +18,8 @@ SECRET_KEY = 'django-insecure-3!*p!8wtbc3)lrp20c6oc^f3bs3unq-ufj+v!(n#qj-wlc7)j)
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = ['https://jacksonsophat.com/', '129.80.29.235']
 ALLOWED_HOSTS = ['*']
-
+# ALLOWED_HOSTS = ['https://jacksonsophat.com/', '129.80.29.235', 'jacksonsophat.com']
 
 # Application definition
 
@@ -135,8 +135,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-# TIME_ZONE = 'America/Chicago'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -148,11 +148,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 
 COMPRESS_ROOT = BASE_DIR / 'static'

@@ -1,6 +1,17 @@
 from django.urls import path
-
 from . import views
+
+
+urlpatterns = [
+    path('', views.homepage, name='homepage'),
+    path('projects/', views.projects, name='projects'),
+    path('local-news/', views.local_news, name='local_news'),
+    path('testing-page/', views.testing_page, name='testing_page'),
+    # path('amazon-price-tracking/', views.amazon_price_tracking, name='amazon'),
+    path('zen/', views.zen, name='zen'),
+    path('contact/', views.contact, name='contact'),
+    path('thank-you/', views.thank_you, name='thank_you'),
+]
 
 # urlpatterns = [
 #     # ex: /polls/
@@ -29,10 +40,3 @@ from . import views
 #     path("<int:question_id>/vote/", views.vote, name="vote"),
 # ]
 
-urlpatterns = [
-    path('', views.homepage, name='homepage'),
-    path('projects/', views.projects, name='projects'),
-    path('local-news/', views.local_news, name='local_news'),
-    path('testing-page/', views.testing_page, name='testing_page'),
-    path('amazon-price-tracking/', views.amazon_price_tracking, name='amazon'),
-]
